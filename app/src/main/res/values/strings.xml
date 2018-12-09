@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">WizeMovie</string>
+    <string name="title_nowplaying">Now Playing</string>
+    <string name="title_toprated">Top Rated</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cast_crew_str">Cast &amp; Crews</string>
+    <string name="see_all_str">See all</string>
+    <string name="director_str">Director: </string>
+    <string name="directors_str">Directors: </string>
+    <string name="people_str">people</string>
+    <string name="no_data_str">No Data</string>
+    <string name="goes_wrong_str">Oops, something goes wrong, please try again</string>
+    <string name="no_internet">Internet not available</string>
+    <string name="retry_txt">Retry</string>
+</resources>

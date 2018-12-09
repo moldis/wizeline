@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/profileImage"
+            android:layout_width="128dp"
+            android:layout_height="86dp"
+            android:src="@drawable/placeholder"
+            app:placeholderImage="@drawable/placeholder"
+            app:placeholderImageScaleType="centerInside"
+            app:roundAsCircle="true" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:maxLines="1"
+            android:layout_gravity="center_horizontal"
+            android:text="Name"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Role"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="130dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:weightSum="1">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_weight="0.3">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/profileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/placeholder"
+                android:scaleType="centerInside"
+                app:placeholderImage="@drawable/placeholder"
+                app:placeholderImageScaleType="centerInside" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_weight="0.7">
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="title"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:id="@+id/txtRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2015" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

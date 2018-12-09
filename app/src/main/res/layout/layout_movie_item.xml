@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:weightSum="1">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:layout_weight="0.3">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/movieImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/placeholder"
+                android:scaleType="centerInside"
+                app:placeholderImage="@drawable/placeholder"
+                app:placeholderImageScaleType="centerInside" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.7">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="title"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <TextView
+                android:id="@+id/txtYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2015" />
+
+            <TextView
+                android:id="@+id/txtInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Info"
+                android:maxLines="2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/txtRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/star_16"
+                android:drawablePadding="10dp"
+                android:text="9.9" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
