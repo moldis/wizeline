@@ -6,6 +6,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
+import com.wizeline.wizelinemovieapp.BuildConfig;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -38,46 +39,27 @@ public class ApiClient {
 
     public static final String BASE_URL = "https://api.themoviedb.org/3/";
     public static final String IMAGE_PATH = "http://image.tmdb.org/t/p/original";
-    public static final String API_KEY = "fce9002a14d2a9df6121f300d03601c7";
-    public static Dispatcher dispatcher = null;
+    public static final String API_KEY = BuildConfig.API_KEY;
 
     final static int CONNECT_TIMEOUT = 120;
     final static int WRITE_TIMEOUT = 120;
     final static int READ_TIMEOUT = 120;
 
-    // for registration
-    public static <T> T createRetrofitService(final Class<T> clazz) {
+    static ApiInterface apiInterface;
+
+    private static <T> T createRetrofitService(final Class<T> clazz) {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        dispatcher = new Dispatcher();
-        dispatcher.setMaxRequests(150);
-
         OkHttpClient client = new OkHttpClient.Builder()
-                .dispatcher(dispatcher)
                 .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
                 .pingInterval(2,TimeUnit.SECONDS)
                 .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .callTimeout(CONNECT_TIMEOUT,TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
-                .protocols(Arrays.asList(Protocol.HTTP_1_1))
-                .connectionPool(new ConnectionPool(0, 1,
-                        TimeUnit.NANOSECONDS))
                 .addNetworkInterceptor(logging)
-                .addInterceptor(chain -> {
-                    Request request = chain.request();
-                    Response response = chain.proceed(request);
-
-                    if (response.code() == 203) { // Session expired
-                        return response;
-                    } else if (response.code() != 200) {
-                        return response;
-                    }
-
-                    return response;
-                })
                 .build();
 
         Gson gson = new GsonBuilder()
@@ -90,18 +72,18 @@ public class ApiClient {
                 .baseUrl(BASE_URL)
                 .client(client)
                 .addConverterFactory(new ToStringConverterFactory())
-                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         T service = restAdapter.create(clazz);
 
         return service;
     }
 
-    // for other methods
     public static ApiInterface getClient() throws IllegalStateException {
-        return createRetrofitService(ApiInterface.class);
+        if(apiInterface==null){
+            apiInterface = createRetrofitService(ApiInterface.class);
+        }
+        return apiInterface;
     }
 
     private static final TypeAdapter<Boolean> booleanAsIntAdapter = new TypeAdapter<Boolean>() {
@@ -132,10 +114,6 @@ public class ApiClient {
             }
         }
     };
-
-    public static Dispatcher getDispatcher() {
-        return dispatcher;
-    }
 
     public static class ToStringConverterFactory extends Converter.Factory {
         private final MediaType MEDIA_TYPE = MediaType.parse("text/plain");
