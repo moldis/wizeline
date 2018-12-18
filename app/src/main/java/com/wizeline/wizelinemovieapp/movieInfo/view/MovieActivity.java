@@ -97,9 +97,10 @@ public class MovieActivity extends AbstractAppCompatActivity implements MovieAct
     public void onDataFetched(MovieBean data) {
         new Handler(Looper.getMainLooper()).post(() -> {
             final ImageRequest imageRequest =
-                    ImageRequestBuilder.newBuilderWithSource(Uri.parse(ApiClient.IMAGE_PATH + data.poster_path))
+                    ImageRequestBuilder.newBuilderWithSource(Uri.parse(ApiClient.IMAGE_PATH + data.backdrop_path))
                             .build();
             movieImage.setImageRequest(imageRequest);
+
             txtTitle.setText(data.title + " ("+data.release_date.substring(0,4) + " year)" );
             setTitle(data.title);
 
