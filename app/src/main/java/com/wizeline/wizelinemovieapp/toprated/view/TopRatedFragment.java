@@ -157,6 +157,8 @@ public class TopRatedFragment extends Fragment implements NowPlayingPresenter.Vi
     @Override
     public void onDataFetched(MovieBean[] data) {
         new Handler(Looper.getMainLooper()).post(() -> {
+
+            noDataText.setVisibility(View.GONE);
             if (adapter == null) {
                 adapter = new NowPlayingAdapter(data, getContext());
                 listView.setAdapter(adapter);
