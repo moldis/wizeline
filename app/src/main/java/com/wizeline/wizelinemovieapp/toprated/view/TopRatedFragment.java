@@ -83,7 +83,7 @@ public class TopRatedFragment extends Fragment implements NowPlayingPresenter.Vi
         listView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), listView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
-                    public void onItemClick(View view, int position) {
+                    public void onSingleItemClick(View view, int position) {
                         MovieBean bean = adapter.getItem(position);
                         Intent intent = MovieActivity.getIntent(bean,getActivity());
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
