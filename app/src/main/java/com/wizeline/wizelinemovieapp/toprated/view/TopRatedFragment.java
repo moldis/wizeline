@@ -86,7 +86,8 @@ public class TopRatedFragment extends Fragment implements NowPlayingPresenter.Vi
                     public void onItemClick(View view, int position) {
                         MovieBean bean = adapter.getItem(position);
                         Intent intent = MovieActivity.getIntent(bean,getActivity());
-                        startActivity(intent);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivityForResult(intent,50);
                     }
 
                     @Override
@@ -104,6 +105,11 @@ public class TopRatedFragment extends Fragment implements NowPlayingPresenter.Vi
             }
             mPresenter.fetchDataTopRated(1);
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

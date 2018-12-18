@@ -93,7 +93,7 @@ public class NowPlayingFragment extends Fragment implements NowPlayingPresenter.
                     public void onItemClick(View view, int position) {
                         MovieBean bean = adapter.getItem(position);
                         Intent intent = MovieActivity.getIntent(bean,getActivity());
-                        startActivity(intent);
+                        startActivityForResult(intent,50);
                     }
 
                     @Override
@@ -105,6 +105,11 @@ public class NowPlayingFragment extends Fragment implements NowPlayingPresenter.
 
         mPresenter = new NowPlayingPresenter(this);
         mPresenter.fetchData(1);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
