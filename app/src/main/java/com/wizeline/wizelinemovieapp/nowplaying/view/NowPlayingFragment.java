@@ -95,10 +95,6 @@ public class NowPlayingFragment extends Fragment implements NowPlayingPresenter.
                         Intent intent = MovieActivity.getIntent(bean,getActivity());
                         startActivityForResult(intent,50);
                     }
-
-                    @Override
-                    public void onLongItemClick(View view, int position) {
-                    }
                 })
         );
         listView.addOnScrollListener(recyclerViewOnScrollListener);

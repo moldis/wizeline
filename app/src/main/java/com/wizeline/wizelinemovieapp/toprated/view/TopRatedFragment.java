@@ -89,10 +89,6 @@ public class TopRatedFragment extends Fragment implements NowPlayingPresenter.Vi
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivityForResult(intent,50);
                     }
-
-                    @Override
-                    public void onLongItemClick(View view, int position) {
-                    }
                 })
         );
         listView.addOnScrollListener(recyclerViewOnScrollListener);
